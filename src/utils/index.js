@@ -18,3 +18,39 @@ export function objFilter (obj, rule = value => !value) {
     return obj
   }
 }
+/** 异步加载图片 */
+export function asyncLoadImg (imgSrc) {
+  const img = new Image()
+  const imgId = '__image__' + Math.random()
+  window[imgId] = img
+  img.onload = img.onerror = function () {
+    delete window[imgId]
+  }
+  img.src = imgSrc
+}
+
+/** 数组去重 */
+export function uniqArr (arr) {
+  const temp = [arr[0]]
+  for (let i = 1; i < arr.length; i++) {
+    let flag = true
+    for (let j = 0; j < temp.length; j++) {
+      if (arr[i] === temp[j]) {
+        flag = false
+        break
+      }
+    }
+    if (flag) {
+      temp.push(arr[i])
+    }
+  }
+  return temp
+}
+
+/** 改写console */
+export function rewriteConsole () {
+  const CONSOLE_METHODS = ['log', 'info', 'warn', 'error']
+  CONSOLE_METHODS.forEach(methodName => {
+    window.console && (window.console[methodName] = function () {})
+  })
+}
