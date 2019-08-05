@@ -19,6 +19,11 @@ export default {
     } else {
       this.msg = 'production'
     }
+    if (process.env.SUB_VER === 'hap') {
+      this.msg += ':hap'
+    } else {
+      this.msg += ':main'
+    }
   }
 }
 </script>
