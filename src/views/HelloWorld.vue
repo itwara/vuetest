@@ -11,6 +11,9 @@ export default {
     return {
       msg: ''
     }
+  },
+  mounted () {
+    console.log('sss')
   }
 }
 </script>
