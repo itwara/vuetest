@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <a>www.mellicapen.com</a>
+    <a>{{msg}}</a>
   </div>
 </template>
 
@@ -13,7 +13,12 @@ export default {
     }
   },
   mounted () {
-    console.log('sss')
+    console.log('mounted')
+    if (process.env.NODE_ENV === 'development') {
+      this.msg = 'development'
+    } else {
+      this.msg = 'production'
+    }
   }
 }
 </script>
