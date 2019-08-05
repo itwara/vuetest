@@ -13,7 +13,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "npm run build-main",
+    "build": "npm run build-main && npm run build-hap",
     "build-main": "SUB_VER='main' node build/build.js",
     "build-hap": "SUB_VER='hap' node build/build.js"
   },
