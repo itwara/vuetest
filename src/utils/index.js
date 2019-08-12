@@ -54,3 +54,11 @@ export function rewriteConsole () {
     window.console && (window.console[methodName] = function () {})
   })
 }
+
+/**
+ * 判断url是否是完整
+ * @param {*} url
+ */
+export function isFullUrl (url) {
+  return /^https?:\/\//.test(url)
+}
