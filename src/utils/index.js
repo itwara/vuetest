@@ -65,3 +65,7 @@ export function rewriteConsole () {
 export function isFullUrl (url) {
   return /^https?:\/\//.test(url)
 }
+
+export function clone () {}
+
+export function deepClone () {}
