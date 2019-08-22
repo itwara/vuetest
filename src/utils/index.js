@@ -1,3 +1,6 @@
+// 导入pollyfill
+export * from './pollyfill'
+
 /** 判断是否是函数 */
 export const isFunc = func => typeof func === 'function'
 /** 判断是否是纯对象 */

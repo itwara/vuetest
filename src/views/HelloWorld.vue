@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import * as utils from '@/utils'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -14,6 +16,7 @@ export default {
   },
   mounted () {
     console.log('mounted')
+    console.log(utils.debounce)
     if (process.env.NODE_ENV === 'development') {
       this.msg = 'development'
     } else {
