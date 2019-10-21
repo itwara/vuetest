@@ -13,6 +13,7 @@ export default new Vuex.Store({
     login
   },
   state: {
-    appInfo: {}
+    appInfo: {},
+    refeshId: 0
   }
 })

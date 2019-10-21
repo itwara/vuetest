@@ -5,5 +5,8 @@ export default {
     appInfo
   ) {
     state.appInfo = appInfo
+  },
+  updateRreshId(state, id) {
+    state.refreshId = id
   }
 }
