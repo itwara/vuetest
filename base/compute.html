@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue base drective</title>
+  <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+  <h3>compute</h3>
+  <div id="dr05">
+      
+  </div>
+  <script type="text/javascript">
+    var vm = new Vue({
+      data: { a: 1 },
+      computed: {
+        // 仅读取，值只须为函数
+        aDouble: function () {
+          return this.a * 2
+        },
+        // 读取和设置
+        aPlus: {
+          get: function () {
+            return this.a + 1
+          },
+          set: function (v) {
+            this.a = v - 1
+          }
+        }
+      }
+    })
+    vm.aPlus   // -> 2
+    vm.aPlus = 3
+    vm.a       // -> 2
+    vm.aDouble // -> 4
+    vm.aDouble = 1 ; // -> 4
+    vm.aDouble //-> 4 
+  </script>
+    <div>
+      <p>总结：</p>
+      
+
+      
+      
+    </div>
+    <div>
+      <p>疑惑：</p>
+      <p>1：计算属性默认只是 getter，不过在需要时你也可以提供一个 setter，所以aDouble直接赋值无效</p>
+      
+    </div>
+</body>
+</html>

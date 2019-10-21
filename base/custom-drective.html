@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue custom drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- E -->
+		<elment-directive id="element"></elment-directive>
+		<!-- A -->
+		<div v-attr-directive="winners" id="attribute1"></div>
+		<!-- A -->
+		<div v-attr-directive:hello.a.b="{name:'binwu'}" id="attribute2"></div>
+		<!-- C -->
+		<div class="class-directive:winners" id="class"></div>
+		<!-- M -->
+		<!-- markdown-directive:winners-->
+	</div>
+	<script type="text/javascript">
+	    //自定义元素指令
+		Vue.elementDirective('elment-directive',{
+			params:['id'],
+			deep: true,
+			bind:function(){
+				console.info('elment-directive bind:' + this.params.id);
+			},
+			update:function(){
+				console.info('elment-directive update;');
+			},
+			unbind:function(){
+				console.info('elment-directive unbind;');
+			}
+		});
+		//自定义属性指令
+		Vue.directive('attr-directive' , {
+			params:['id'],
+			deep: false,
+			bind:function(value){
+				this.el.innerHTML = '<br>----------attr-directive bind--------<br>'
+			    +'this.params.id:'+ this.params.id + '<br>'
+			    +'this.name:' + this.name + '<br>'
+			    +'this.args:' + this.args + '<br>'
+			    +'this.expression:' + this.expression + '<br>'
+			    +'this.modifiers:' + JSON.stringify(this.modifiers) + '<br>'
+			    +'this.descriptor:' + JSON.stringify(this.descriptor) + '<br>'
+			    ;
+			},
+			update:function(value){
+				this.el.innerHTML += '<br>----------attr-directive update--------<br>'
+				+'value:' + JSON.stringify(value) + '<br>'
+		        ;
+			},
+			unbind:function(value){
+				console.info('attr-directive unbind;');
+			}
+		});
+		//自定义类指令
+		Vue.directive('class-directive' , {
+			params:['id'],
+			bind:function(){
+				console.info('class-directive bind:' + this.params.id);
+			},
+			update:function(){
+				console.info('class-directive update;');
+			},
+			unbind:function(){
+				console.info('class-directive unbind;');
+			}
+		});
+		//自定义注释指令
+		Vue.directive('markdown-directive' , {
+			params:['id'],
+			bind:function(){
+				console.info('markdown-directive bind:' + this.params.id);
+			},
+			update:function(){
+				console.info('markdown-directive update;');
+			},
+			unbind:function(){
+				console.info('markdown-directive unbind;');
+			}
+		});
+		//实例化
+		var vm = new Vue({
+		  el: '#app',
+		  data:{
+		  	winners:['andy','peter']
+		  }
+		});
+	</script>
+    <div>
+    	<p>总结：</p>
+    	<p>1.vue custom directive 不支持自定义类指令和注释指令；</p>
+    	<p>2.vue directive是在实例化过程中被解析的，不实例化的话，这些指令不被浏览器识别，不显示。</p>
+    	<p>3.vue 实例化必须在el元素之后</p>
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    	<p>1.vue实例化为啥会触发自定义属性指令的update</p>
+    </div>
+</body>
+</html>

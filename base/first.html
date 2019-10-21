@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>first demo</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="sweetalert2.js"></script>
+</head>
+<body>
+	<div id="app1">
+  		{{ message }}
+	</div>
+	<div id="app2">
+  		<p>{{ message }}</p>
+  		<input v-model="message">
+	</div>
+	<div id="app3">
+	  <ul>
+	    <li v-for="todo in todos">
+	      {{ todo.text }}
+	    </li>
+	  </ul>
+	</div>
+	<div id="app4">
+  		<p>{{ message }}</p>
+  		<button v-on:click="reverseMessage">Reverse Message</button>
+	</div>
+	<script type="text/javascript">
+		Vue.use(Sweetalert2);
+		//单条输出
+		new Vue({
+		  el: '#app1',
+		  data: {
+		    message: 'Hello Vue1.js!'
+		  }
+		})
+
+		//双向绑定
+		new Vue({
+		  el: '#app2',
+		  data: {
+		    message: 'Hello Vue2.js!'
+		  }
+		})
+
+		//多条输出 v-for
+		new Vue({
+		  el: '#app3',
+		  data: {
+		    todos: [
+		      { text: 'Learn JavaScript' },
+		      { text: 'Learn Vue.js' },
+		      { text: 'Build Something Awesome' }
+		    ]
+		  }
+		})
+		
+		//v-on:click
+		new Vue({
+		  el: '#app4',
+		  data: {
+		    message: 'Hello Vue.js!'
+		  },
+		  methods: {
+		    reverseMessage: function () {
+		      this.message = this.message.split('').reverse().join('')
+		    }
+		  }
+		})
+	</script>
+</body>
+</html>

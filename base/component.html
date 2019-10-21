@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue component</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+			<first></first>
+		    <second></second>
+		    <third></third>
+		    <fourth name="andy"></fourth>
+		    <fifth name="binwu"></fifth>
+  			<!-- 动态组件:组件在 vm.curCom 变化时改变 -->
+		    <component :is="curCom">
+			</component>
+	</div>
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('first',Vue.extend({template: '<div>first</div>'}));
+
+		//全局注册简写
+		Vue.component('second',{
+			template: '<div>second</div>'
+		});
+
+		//局部注册
+		Vue.component('third',Vue.extend({
+			template: '<div>third:<child></child></div>',
+			components:{
+				child:Vue.extend({template: '<span>child</span>'})
+			}
+		}));
+
+		//局部注册简写
+		Vue.component('fourth',{
+			props:['name'],
+			template: '<div>fourth:{{name}}<child :cname=name></child></div>',
+			components:{
+				child:{
+					props:['cname'],
+					template: '<span>&{{cname}}:child</span>'
+				}
+			}
+		});
+
+        //获取属性值
+        Vue.component('fifth',{
+        	props:['name'],
+        	template:'<div>hello,{{name}}</div>'
+        })
+        //实例化
+        var vm = new Vue({
+        	el:'#app',
+        	data:{
+        		curCom:'fourth'
+        	}
+        });
+	</script>
+    <div>
+    	<p>总结：</p>
+    	<p>1.全局注册有两种方式，一种是常规方式，一种是简写模式。简写模式，省去Vue.extend</p>
+    	<p>2.全局注册和局部注册的区别在于，通过option选项components设置子组件，子组件只能在父级的template中使用</p>
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    </div>
+</body>
+</html>
+

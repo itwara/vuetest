@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue custom drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+			
+	</div>
+	<script type="text/javascript">
+	    var mixin = {
+		  methods: {
+		    foo: function () {
+		      console.log('foo')
+		    },
+		    conflicting: function () {
+		      console.log('from mixin')
+		    }
+		  }
+		}
+
+		var vm = new Vue({
+		  mixins: [mixin],
+		  methods: {
+		    bar: function () {
+		      console.log('bar')
+		    },
+		    conflicting: function () {
+		      console.log('from self')
+		    }
+		  }
+		})
+
+		console.info(vm.conflicting.toString());
+	</script>
+    <div>
+    	<p>总结：</p>
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue base drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<style type="text/css">
+		[v-cloak] {
+		  display: none;
+		}
+	</style>
+</head>
+<body>
+	<h3>#Prop类型绑定（单向、双向）</h3>
+	<div id="dr05">
+	    <div>
+	        <div>vue实例：</div>
+	        <input v-model="name" />
+	    </div>
+	    <br />
+	    <div>
+	    	<div test="{{name}}">component组件mustache：</div>
+	        <child05 my-message05="{{name}}"></child05>
+	        <div>component组件（默认）：</div>
+	        <child05 :my-message05="name"></child05>
+	        <div>component组件（once）：</div>
+	        <child05 :my-message05.once="name"></child05>
+	        <div>component组件（sync）：</div>
+	        <child05 :my-message05.sync="name"></child05>
+	        <div>component组件（camel）：</div>
+	        <child05 :my-message05.camel="name"></child05>
+	    </div>
+	</div>
+	<script type="text/javascript">
+		//********************************************************************
+		//Prop类型绑定
+		Vue.component("child05", {
+		    props: ["myMessage05"],
+		    template: '<input type="text" v-model="myMessage05" />'
+		});
+		var dr05 = new Vue({
+		    el: "#dr05",
+		    data: {
+		        name: "DarkRanger",
+		    }
+		});
+	</script>
+    <div>
+    	<p>总结：</p>
+    	
+
+    	
+    	
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    	<p>1：v-ref</p>
+    	
+    </div>
+</body>
+</html>

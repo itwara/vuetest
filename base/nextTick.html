@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue custom drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+			<div id="example">{{msg}}</div>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+		  el: '#example',
+		  data: {
+		    msg: '123'
+		  }
+		})
+		vm.msg = 'new message' // 修改数据
+		console.info(vm.$el.textContent === 'new message'); // false
+		console.info(document.getElementById('example').innerText);
+		Vue.nextTick(function () {
+		  console.info(vm.$el.textContent === 'new message'); // true
+		})
+	</script>
+    <div>
+    	<p>总结：</p>
+    	<p>1.nextTick 中的callback能获取到的dom值变化后的值</p>
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    </div>
+</body>
+</html>
+

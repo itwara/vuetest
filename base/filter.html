@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue custom drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-text='message|reverse'></div>
+		<div v-text='message|wrap "before" "after"'></div>		
+		<div v-text='message|dynamics param'></div>		
+		<input v-model='test|twoWayFilter'></input>		
+	</div>
+	<script type="text/javascript">
+	    //自定义过滤器
+		Vue.filter('reverse',function(value){
+			return value.split('').reverse().join('');
+		})
+
+		//带参数的自定义过滤器
+		Vue.filter('wrap',function(value,begin,end){
+			return begin + ' ' + value + ' ' + end;
+		})
+
+		//参数动态变化的自定义过滤器
+		Vue.filter('dynamics',function(value,param){
+			return value + ' ' + param ;
+		})
+
+		//双向过滤
+		Vue.filter('twoWayFilter',{
+			read:function(value){
+				return '$' + value ;
+			},
+			write:function(value,oldValue){
+				console.info(this.test === value);
+				return value;
+			}
+		})
+
+		//实例化
+		var vm = new Vue({
+		  el: '#app',
+		  data:{
+		  	param:'dynamics',
+		  	test:'this is a test',
+		  	message:'this is a test'
+		  }
+		});
+	</script>
+</body>
+</html>

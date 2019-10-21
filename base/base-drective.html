@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue base drective</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<style type="text/css">
+		[v-cloak] {
+		  display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>vue常见指令：</p>
+		<div v-text="msg"></div>
+		<div v-html="html"></div>
+		<div v-if="if">v-if</div>
+		<div v-show="show">v-show</div>
+		<div v-else="else">
+			<div>v-show</div>
+			<div>v-else</div>
+		</div>
+		<div v-for="(key,value) of items">
+			{{value}}
+		</div>
+		<div v-on:click='click'>v-on</div>
+		<div v-bind:class="classObject">v-bind</div>
+		<div><input v-model="model"></input></div>
+		<div><father v-ref:ref></father></div>
+		<div v-el:other></div>
+		<div v-pre>v-pre{{msg}}</div>
+		<div v-cloak>
+		  {{ cloak }}
+		</div>
+	</div>
+	<script type="text/javascript">
+	    Vue.component('father',{
+	    	template:'',
+    		components:{
+				ref:{
+					template:'v-ref'
+				}	
+			}
+		})
+	    
+		//实例化
+		var vm = new Vue({
+		  el: '#app',
+		  data:{
+		  	msg:"v-text",
+		  	html:'<span>v-html</span>',
+		  	if:true,
+		  	show:false,
+		    else:true,
+		    items:['v-for'],
+			classObject: {
+			   'class-a': true,
+			   'class-b': false
+			},
+			model:'v-model',
+			cloak:'v-cloak'
+		  },
+		  methods:{
+		  	click:function(e){
+		  		e.target.className = 'blue';
+		  	}
+		  }
+		});
+	</script>
+    <div>
+    	<p>总结：</p>
+    	<p>1.指令会被最终解析掉，不会在页面显示;指令后面的值会被当作表达式处理</p>
+    	<p>2.v-text改变的是当前dom的textContent</p>
+    	<p>3.v-html改变的是当前dom的innerHTML</p>
+    	<p>4.v-if控制当前dom的删除与否，类似remove，而非detach</p>
+    	<p>5.v-view控制当前dom的display</p>
+    	<p>6.v-else与v-if|v-show配对</p>
+    	<p>7.v-for遍历数组或对象，表达式的写法 item in/of items ,或者 (key,value) in/of items</p>
+    	<p>8.v-on用在普通元素上时，只能监听原生 DOM 事件。用在自定义元素组件上时，也可以监听子组件触发的自定义事件。</p>
+    	<p>9.v-bind动态地绑定一个或多个 attribute，或一个组件 prop 到表达式。</p>
+    	<p>10.v-model指令在表单控件元素上创建双向数据绑定。</p>
+    	<p>11.v-ref</p>
+    	<p>12.v-el为 DOM 元素注册一个索引，方便通过所属实例的 $els 访问这个元素,通过this.$els.other</p>
+    	<p>13.v-pre跳过编译这个元素和它的子元素</p>
+    	<p>14.v-cloak当前的dom编译完才显示</p>
+
+    	
+    	
+    </div>
+    <div>
+    	<p>疑惑：</p>
+    	<p>1：v-ref</p>
+    	
+    </div>
+</body>
+</html>
