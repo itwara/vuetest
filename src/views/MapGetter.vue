@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <a>{{msg}}</a>
+    <a>{{productId}}</a>
   </div>
 </template>
 
@@ -9,19 +9,11 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Refresh',
-  data () {
-    return {
-      msg: ''
-    }
-  },
+  name: 'MapGetter',
   computed: {
     ...mapGetters([
-      'refreshId'
+      'productId'
     ])
-  },
-  mounted () {
-    console.log(this.refreshId)
   }
 }
 </script>

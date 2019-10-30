@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/views/Hello'
-import Refresh from '@/views/Refresh'
+import MapGetter from '@/views/MapGetter'
 
 Vue.use(Router)
 
@@ -13,9 +13,9 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/refresh',
-      name: 'Refresh',
-      component: Refresh
+      path: '/getter',
+      name: 'MapGetter',
+      component: MapGetter
     }
   ]
 })

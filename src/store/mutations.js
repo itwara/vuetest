@@ -6,7 +6,7 @@ export default {
   ) {
     state.appInfo = appInfo
   },
-  updateRreshId(state, id) {
-    state.refreshId = id
+  updateRreshId (state, id) {
+    state.productId = id
   }
 }
