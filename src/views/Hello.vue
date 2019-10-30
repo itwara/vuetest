@@ -8,7 +8,7 @@
 import * as utils from '@/utils'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Hello',
   data () {
     return {
       msg: ''
