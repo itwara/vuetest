@@ -1,12 +1,10 @@
 <template>
   <div class="hello">
-    <a>{{msg}}</a>
+    <div @click="onHelloClick">{{msg}}</div>
   </div>
 </template>
 
 <script>
-import * as utils from '@/utils'
-
 export default {
   name: 'Hello',
   data () {
@@ -14,9 +12,19 @@ export default {
       msg: ''
     }
   },
+  computed: {
+    pageId () {
+      console.log('hello: computed: pageId')
+      console.log(this)
+      return this.$route.query.id
+    }
+  },
+  watch: {
+    pageId () {
+      console.log('hello: watch: pageId')
+    }
+  },
   mounted () {
-    console.log('mounted')
-    console.log(utils.debounce)
     if (process.env.NODE_ENV === 'development') {
       this.msg = 'development'
     } else {
@@ -26,6 +34,11 @@ export default {
       this.msg += ':hap'
     } else {
       this.msg += ':main'
+    }
+  },
+  methods: {
+    onHelloClick () {
+      this.$router.push({path: '/getter', query: { id: 123 }})
     }
   }
 }

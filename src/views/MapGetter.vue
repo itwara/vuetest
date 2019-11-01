@@ -14,6 +14,9 @@ export default {
     ...mapGetters([
       'productId'
     ])
+  },
+  beforeCreate () {
+    console.log('mapGetter: beforeCreate')
   }
 }
 </script>
