@@ -69,3 +69,5 @@ export function isFullUrl (url) {
 export function clone () {}
 
 export function deepClone () {}
+
+export const context = typeof window === 'undefined' ? global : window
