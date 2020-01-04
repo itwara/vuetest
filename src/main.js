@@ -18,8 +18,8 @@ new Vue({
     name: 'vue 实例化'
   },
   computed: {
-    age () {
-      return 18
+    aliasName () {
+      return this.name + 18
     }
   },
   watch: {
@@ -28,33 +28,42 @@ new Vue({
     }
   },
   methods: {
-    setAag () {
-      this.age = 20
+    setName (name) {
+      this.name = name
     }
   },
   beforeCreate (e) {
-    console.log('beforeCreate', this)
+    // 初始化 event 和 钩子
+    console.log('beforeCreate: this.$options', this.$options)
+    console.log('beforeCreate: this._events', this._events)
+    console.log('beforeCreate: this', this)
+
+    // 数据未观测 (data observer) 和 event/watcher 事件未配置
+    console.log('beforeCreate: data: ', this.name)
+    console.log('beforeCreate: computed: ', this.aliasName)
+    console.log('beforeCreate: methods: ', this.setName)
+    console.log('beforeCreate: this._watchers', this._watchers)
   },
   created (e) {
-    console.log('created', this)
+    // console.log('created', this)
   },
   beforeMount (e) {
-    console.log('beforeMount', this)
+    // console.log('beforeMount', this)
   },
   mounted (e) {
-    console.log('Mounted', this)
+    // console.log('Mounted', this)
   },
   beforeUpdate (e) {
-    console.log('beforeUpdate', this)
+    // console.log('beforeUpdate', this)
   },
   updated (e) {
-    console.log('updated', this)
+    // console.log('updated', this)
   },
   beforeDestroy (e) {
-    console.log('beforeDestroy', this)
+    // console.log('beforeDestroy', this)
   },
   destroyed (e) {
-    console.log('destroyed', this)
+    // console.log('destroyed', this)
   },
   template: '<App/>'
 })
