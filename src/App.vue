@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app-root">
     <keep-alive>
       <router-view/>
     </keep-alive>
@@ -17,7 +17,7 @@ html, body {
   height: 100%;
   background-color: #ccc;
 }
-#app {
+#app-root {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
