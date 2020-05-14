@@ -14,8 +14,8 @@ export default {
   },
   computed: {
     pageId () {
-      console.log('hello: computed: pageId')
-      console.log(this)
+      // console.log('hello: computed: pageId')
+      // console.log(this)
       return this.$route.query.id
     }
   },

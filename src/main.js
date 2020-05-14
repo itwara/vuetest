@@ -6,11 +6,11 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
-
+debugger
 /* eslint-disable no-new */
 new Vue({
   // el: document.getElementById('app'),
-  // el: '#app',
+  el: '#app',
   router,
   store,
   components: { App },
@@ -45,17 +45,17 @@ new Vue({
     // console.log('beforeCreate: this._watchers', this._watchers)
   },
   created (e) {
-    // $el 未创建
-    console.log('created: this.$el', this.$el)
+    // // $el 未创建
+    // console.log('created: this.$el', this.$el)
 
-    // 数据观测 (data observer) 和 event/watcher 事件已完毕
-    console.log('created: data: ', this.name)
-    console.log('created: computed: ', this.aliasName)
-    console.log('created: methods: ', this.setName)
-    console.log('created: this._watchers', this._watchers)
+    // // 数据观测 (data observer) 和 event/watcher 事件已完毕
+    // console.log('created: data: ', this.name)
+    // console.log('created: computed: ', this.aliasName)
+    // console.log('created: methods: ', this.setName)
+    // console.log('created: this._watchers', this._watchers)
 
-    // all
-    console.log('created', this)
+    // // all
+    // console.log('created', this)
   },
   beforeMount (e) {
     // console.log('beforeMount', this)
